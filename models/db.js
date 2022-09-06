@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 // Allow Promises
 mongoose.Promise = global.Promise;
 // Connection
-mongoose.connect('mongodb://localhost:27017/chuks', { useNewUrlParser: true,useUnifiedTopology:true,useFindAndModify:false  });
+const db = process.env.MONGO_DB || 'mongodb://localhost:27017/chuks'
+mongoose.connect(db, { useNewUrlParser: true,useUnifiedTopology:true,useFindAndModify:false  });
 // Validation
 mongoose.connection
   .once('open', () => console.log('Connected to the database!'))
