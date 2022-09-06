@@ -1,22 +1,17 @@
 import React from 'react';
 import './Student.css';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import Avatar from 'react-avatar';
 
 
-const Student = ({ _id, name, email, enrollnumber, removeStudent }) => {
+const Student = ({ _id, lecturer, coursecode, level, removeStudent }) => {
 
   return(
     <tr>
-      <td>{ name }</td>
-      <td>{ email }</td>
-      <td>{ enrollnumber }</td>
-      <td>
-        <button onClick={ () => removeStudent(_id) } className="Action-Button fa fa-trash"></button>
-        <Link to={{ pathname: '/edit', search: _id }}>
-         <button className="Action-Button fa fa-pencil"></button>
-        </Link>
-      </td>
+      <td>{ lecturer }</td>
+      <td>{ coursecode }</td>
+      <td>{ level }</td>
+      
 
     </tr>
   );

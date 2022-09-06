@@ -6,75 +6,104 @@ import 'react-toastify/dist/ReactToastify.css';
 
 class AddStudent extends Component {
   state = {
-    name: "",
-    email: "",
-    enrollnumber: "",
+    lecturer: "",
+    coursecode: "",
+    coursename: "",
+    level:"",
     response: ""
   };
 
-  onChangeHandler = e => this.setState({ [e.target.name]: e.target.value });
+  /**      lecturer
+coursecode
+coursename
+level */
 
-  addStudent = async e => {
+  onChangeHandler = (e) => {  this.setState({ [e.target.name]: e.target.value });}
+
+  addStudent = async (e) => {
     e.preventDefault();
+    const {lecturer,coursecode, coursename,level} = this.state
+    let data = {
+      lecturer:lecturer,coursecode:coursecode, coursename:coursename, level:level
+    }
     try {
-      const newStudent = await axios.post("/api/students/", {
-          name: this.refs.name.value,
-          email: this.refs.email.value,
-          enrollnumber: this.refs.enrollnumber.value
-        }
-      );
+      //console.log("hit here first", data)
+      const newStudent = await axios.post("/api/courses/", data);
 
-      toast("Student " + newStudent.data.newStudent.name + " created successfully" ,{ type: toast.TYPE.SUCCESS, autoClose: 3000 });
+      toast("curse  added successfully", { type: toast.TYPE.SUCCESS, autoClose: 3000 });
+      this.setState({
+        lecturer:"", coursecode:"", coursename:"", level:""
+      })
     } catch (err) {
+     // console.log(err, err.message)
       toast(err.message ,{ type: toast.TYPE.ERROR, autoClose: 3000 });
     }
   };
 
   render() {
+    const {lecturer, coursecode, coursename, level} = this.state
     return (
       <div className="AddStudent-Wrapper">
-        <h1>Add Student:</h1>
+        <h1>Add Course</h1>
         <form onSubmit={this.addStudent}>
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name">Lecturers Name:</label>
           <input
             type="text"
-            placeholder="Enter the name of the students here"
-            name="name"
+            placeholder="Enter the name of the Lecturer"
+            name="lecturer"
             onChange={this.onChangeHandler}
-            ref="name"
+            ref="lecturer"
             className="Add-Student-Input"
             required
             minLength="3"
             maxLength="33"
-            id="name"
+            id="lecturer"
+            value={lecturer}
           />
-          <label htmlFor="email">email: <b>(must be a valid email)</b></label>
+          <label htmlFor="name">Course code</label>
           <input
+            value={coursecode}
             type="text"
-            placeholder="enter your email here"
-            name="email"
+            placeholder="Enter Course Code"
+            name="coursecode"
             onChange={this.onChangeHandler}
-            ref="email"
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            ref="coursecode"
             className="Add-Student-Input"
             required
-            id="email"
+            minLength="3"
+            maxLength="33"
+            id="coursecode"
           />
-          <label htmlFor="enrollnumber">Enrollment Number: </label>
+          <label htmlFor="name">Course Name</label>
           <input
-            type="number"
-            placeholder="0 to 120"
-            name="enrollnumber"
-            min="1"
-            max="120"
+            value={coursename}
+            type="text"
+            placeholder="Enter Course Name"
+            name="coursename"
             onChange={this.onChangeHandler}
-            ref="enrollnumber"
+            ref="coursename"
             className="Add-Student-Input"
             required
-            id="enrollnumber"
+            minLength="3"
+            maxLength="33"
+            id="coursename"
           />
-          <button type="submit" className="Add-Student-Submit fa fa-plus"></button>
-          <button type="reset" className="Add-Student-Reset fa fa-refresh"></button>
+          <label htmlFor="name">Level</label>
+          <input
+            value={level}
+            type="text"
+            placeholder="Enter level"
+            name="level"
+            onChange={this.onChangeHandler}
+            ref="level"
+            className="Add-Student-Input"
+            required
+            minLength="3"
+            maxLength="33"
+            id="level"
+          />
+          <button type="submit" className="Add-Student-Submit fa fa-plus">Add </button>
+          <button type="reset" className="Add-Student-Reset fa fa-refresh">Reset</button>
         </form>
         <ToastContainer />
       </div>

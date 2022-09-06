@@ -17,9 +17,31 @@
   border-radius: 4px;
   outline: none;
 }
-
+img.bida-logo {
+  width: 150px;
+}
+input.form-input_ {
+  width: 100%;
+}
+.form-holder {
+  width: 70%;
+}
+button.sub-btn {
+  padding: 10px;
+  width: 50%;
+  margin: 20px;
+  background: #3b8ac7;
+  border: none;
+  color: white;
+  border-radius: 50px;
+}
+.form-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .Add-Student-Submit, .Add-Student-Reset {
-  width: 45px;
+  padding: 5px 20px;
   height: 40px;
   color: #fff;
   border: none;

@@ -15,9 +15,11 @@ class Home extends Component {
 
   async componentDidMount() {
     try {
-      const students = await axios("/api/students/");
+      const students = await axios.get("/api/courses/");
+      console.log(students.data.course )
       this.setState({ data: students.data });
     } catch (err) {
+      console.log(err)
       this.setState({ error: err.message });
     }
   }
@@ -33,11 +35,11 @@ class Home extends Component {
   };
 
   searchStudents = async username => {
-    let allStudents = [...this.state.data.students];
+    let allStudents = [...this.state.data.course];
     if (this.state.allStudents === null) this.setState({ allStudents });
 
-    let students = this.state.data.students.filter(({ name }) =>
-      name.toLowerCase().includes(username.toLowerCase())
+    let students = this.state.data.course.filter(({ lecturer }) =>
+    lecturer.toLowerCase().includes(username.toLowerCase())
     );
     if (students.length > 0) this.setState({ data: { students } });
 
@@ -50,28 +52,26 @@ class Home extends Component {
 
     if (this.state.data)
       students =
-        this.state.data.students &&
-        this.state.data.students.map(student => (
+        this.state.data.course &&
+        this.state.data.course.map(student => (
           <Student key={student._id} {...student} removeStudent={this.removeStudent} />
         ));
     else return <div className="Spinner-Wrapper"> <PropagateLoader color={'#333'} /> </div>;
 
     if (this.state.error) return <h1>{this.state.error}</h1>;
     if (this.state.data !== null)
-      if (!this.state.data.students.length)
-        return <h1 className="No-Students">No students!</h1>;
+      if (!this.state.data.course.length)
+        return <h1 className="No-Students">Lectures set yet!</h1>;
 
     return (
       <div className="Table-Wrapper">
-        <h1>Students:</h1>
-        <SearchStudents searchStudents={this.searchStudents} />
+        <h1>Lecturers And Courses:</h1>
         <table className="Table">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Enrollment Number</th>
-              <th>Actions</th>
+              <th>Lecturer</th>
+              <th>Course Code</th>
+              <th>Level</th>
             </tr>
           </thead>
           <tbody>{students}</tbody>

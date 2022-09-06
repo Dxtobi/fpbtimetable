@@ -3,7 +3,34 @@ const router = express.Router();
 
 // Student model
 const Students = require('../models/students');
+const User =  require('../models/users');
 
+
+
+router.post('/register', async (req, res) => {
+  console.log('reg')
+  try {
+    const newUser = await User.create({
+      staffid: req.body.staffid,
+      password: req.body.password,
+      admin: req.body.staffid === 'ADMINID101' ? true : false
+    });
+     res.send({ newUser });
+  } catch(err) {
+    res.status(400).send({ error: err });
+  }
+
+});
+
+router.post('/login', async (req, res) => {
+  try {
+    const newUser = await User.findOne({ staffid: req.body.staffid, password: req.body.password});
+     res.send({ newUser });
+  } catch(err) {
+    res.status(400).send({ error: err });
+  }
+
+});
 // @route   GET /api/students/
 // @desc    Get all students
 // @access  Public

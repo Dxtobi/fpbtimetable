@@ -1,0 +1,44 @@
+.button-holders {
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+button.generate-btn {
+    padding: 10px;
+    border: none;
+    background: #6200ea;
+    color: white;
+    border-radius: 4px;
+    box-shadow: 0px 10px 10px 2px #00000042;
+}
+.table-holder {
+    display: flex;
+    align-items: flex-start;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 0px auto;
+    border: 1px solid gray;
+}
+.navBar-wrapper {
+    background-color: #6200ea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+tr {
+    border: 1px solid black;
+    background: lightgrey;
+}
+td {
+    font-size: 15px;
+    font-weight: lighter;
+    padding: 0.1rem; 
+    color: #808080;
+    line-height: 1.4;
+}

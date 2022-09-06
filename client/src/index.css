@@ -3,7 +3,9 @@ body {
   padding: 0;
   font-family: 'Lato', sans-serif;
 }
-
+.App{
+margin-top: 100px;
+}
 input {
   display: block;
   padding: 10px;
@@ -18,4 +20,15 @@ input[type="submit"] {
 
 a {
   text-decoration: none;
+}
+.Action-Button_ {
+   width: 100%; 
+  height: 40px;
+  background-color: #3833A5;
+  color: #fff;
+  border: none;
+  margin: 5px;
+  border-radius: 2px;
+  cursor: pointer;
+  outline: none;
 }
