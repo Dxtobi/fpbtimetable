@@ -20,10 +20,9 @@ if (process.env.NODE_ENV === 'production') {
    // res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   //});
 
-  app.get('*', function (req, res) {
-    const index = express.static(path.join(__dirname, 'client', 'build', 'index.html'));
-    res.sendFile(index);
-  });
+
+    app.use(express.static(path.join(__dirname, 'client/build')))
+
 }
 
 app.use('/api/students', require('./routes/students'));
