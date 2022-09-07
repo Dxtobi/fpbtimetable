@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'production') {
   //});
 
   app.get('*', function (req, res) {
-    const index = path.join(__dirname, 'client', 'build', 'index.html');
+    const index = express.static(path.join(__dirname, 'client', 'build', 'index.html'));
     res.sendFile(index);
   });
 }
