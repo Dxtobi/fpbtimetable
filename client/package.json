@@ -16,8 +16,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "heruko-postbuild": "npm install && npm run-script build && npm run-script start:prod0"
+    "eject": "react-scripts eject"
+  
   },
   "proxy": "http://localhost:5000"
   
