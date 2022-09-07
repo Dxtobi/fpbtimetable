@@ -10,8 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(require('cors')());
 app.use(require('helmet')());
-app.use('/api/students', require('./routes/students'));
-app.use('/api/courses', require('./routes/course'));
+
 // Production
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
@@ -21,5 +20,8 @@ if (process.env.NODE_ENV === 'production') {
  //   res.sendfile(path.resolve(__dirname, 'client', 'build', 'index.html'));
  // });
 }
+
+app.use('/api/students', require('./routes/students'));
+app.use('/api/courses', require('./routes/course'));
 
 app.listen(PORT, () => console.log(`App running on port ${PORT}`)  );
