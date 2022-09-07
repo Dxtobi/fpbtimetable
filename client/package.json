@@ -9,7 +9,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-spinners": "^0.9.0",
-    "react-toastify": "^6.1.0"
+    "react-toastify": "^6.1.0",
+    "heruko-postbuild": "npm install && npm run-script build && npm run-script start:prod0"
   },
   "scripts": {
     "start": "react-scripts start",
