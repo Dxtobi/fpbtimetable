@@ -21,7 +21,7 @@ console.log('😸', path.join(__dirname, "client/build"), '😸')
 app.get("*", (req, res) => {
  
   if (!req.path.includes('api')) {
-    console.log('says', '😸 hit  me harder 😸 😸 😸😸😸')
+    console.log('says', '😸 hit  me harder 😸 😸 😸😸😸', root, req.path)
     res.sendFile('index.html', { root });
   } else {
     console.log('this is the error 😸 hahahah 😸 hahahah😸')
