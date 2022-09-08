@@ -14,8 +14,8 @@ console.log('😸', path.join(__dirname, "client/build"), '😸')
 }
 
 
-app.get('/',(req, res) => {
-  console.log(t,'says', '😸 hit  me harder 😸 😸 😸😸😸')
+app.get('/*',(req, res) => {
+  console.log('says', '😸 hit  me harder 😸 😸 😸😸😸')
   res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
  
 });
