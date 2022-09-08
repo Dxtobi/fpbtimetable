@@ -2,11 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 require('./models/db');
+const root = require('path').join(__dirname, 'client', 'build')
 const app = express();
+app.use(express.static(root));
 app.use(require('cors')());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-const root = require('path').join(__dirname, 'client', 'build')
+
 if(process.env.NODE_ENV === 'production'){
   //set static folder
  // app.use(express.static(path.join(__dirname, "client/build")));
@@ -18,7 +20,11 @@ console.log('😸', path.join(__dirname, "client/build"), '😸')
 
 app.get("*", (req, res) => {
   console.log('says', '😸 hit  me harder 😸 😸 😸😸😸')
-  res.sendFile('index.html', { root });
+  if (!req.path.includes('api')){
+    res.sendFile('index.html', { root });
+  } else {
+    console.log('this is the error 😸 hahahah 😸 hahahah😸')
+      }
 })
 
 app.use(require('helmet')());
