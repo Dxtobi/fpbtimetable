@@ -13,7 +13,7 @@ if(process.env.NODE_ENV === 'production'){
 console.log('😸', __dirname+"/client/build", '😸')
 }
 
-
+app.use(express.static(path.join(__dirname, "client/build")));
 
 app.use(require('helmet')());
 app.use('/api/students', require('./routes/students'));
