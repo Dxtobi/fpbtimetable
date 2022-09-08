@@ -14,12 +14,16 @@ app.use('/api/courses', require('./routes/course'));
 // Production
 if(process.env.NODE_ENV === 'production') {
 
-  // Serve any static files
-  app.use(express.static(path.join(__dirname, "client/build")));
-  // Handle React routing, return all requests to React app
-  app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirname, "client/build", "index.html"));
-  });
+ try {
+   // Serve any static files
+   app.use(express.static(path.join(__dirname, "client/build")));
+   // Handle React routing, return all requests to React app
+   app.get("*", function (req, res) {
+     res.sendFile(path.join(__dirname, "client/build", "index.html"));
+   });
+ } catch (error) {
+  console.log(error.message, "from server")
+ }
 
   
   /*
