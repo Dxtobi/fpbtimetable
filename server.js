@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 if(process.env.NODE_ENV === 'production'){
   //set static folder
   app.use(express.static(path.join(__dirname, "client/build")));
-
+console.log('😸', __dirname+"/client/build", '😸')
 }
 
 
