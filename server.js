@@ -11,15 +11,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Production
 if(process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
- try {
+  //app.use(express.static('client/build'));
+
    // Serve any static files
-  // app.use(express.static(path.join(__dirname, "/client/build")));
+   app.use(express.static(path.join(__dirname, "/client/build")));
    // Handle React routing, return all requests to React app
    
- } catch (error) {
-  console.log(error.message, "from server")
- }
+
 
 }
 app.get('/', function (req, res) {
