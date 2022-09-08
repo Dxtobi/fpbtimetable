@@ -15,8 +15,9 @@ console.log('😸', __dirname+"/client/build", '😸')
 
 
 app.get('/',(req, res) => {
-  console.log('😸 hit  me harder 😸 😸 😸😸😸')
-  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  
+  const t = res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  console.log(t,'says', '😸 hit  me harder 😸 😸 😸😸😸')
 });
 app.use(require('helmet')());
 app.use('/api/students', require('./routes/students'));
