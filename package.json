@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "homepage": "https://schooltimetablefpb.herokuapp.com/",
   "scripts": {
     "client-install": "cd client && npm install",
     "start": "node server.js",
