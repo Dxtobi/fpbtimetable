@@ -16,7 +16,7 @@ app.use(express.static(root));
 console.log('😸', path.join(__dirname, "client/build"), '😸')
 }
 
-app.get("/*", (req, res) => {
+app.get("*", (req, res) => {
   console.log('says', '😸 hit  me harder 😸 😸 😸😸😸')
   res.sendFile('index.html', { root });
 })
