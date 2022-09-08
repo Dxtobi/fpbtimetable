@@ -24,7 +24,7 @@ app.get("*", (req, res) => {
   if (!req.path.includes('api')) {
     console.log('says', '😸 hit  me harder 😸 😸 😸😸😸', root, req.path)
     console.log(path.resolve(__dirname, 'client', 'build', 'index.html')+root, root+req.path)
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    res.sendFile(root+req.path);
   } else {
     console.log('this is the error 😸 hahahah 😸 hahahah😸')
       }
