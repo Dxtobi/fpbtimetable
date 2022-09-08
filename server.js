@@ -23,7 +23,7 @@ app.get("*", (req, res) => {
  
   if (!req.path.includes('api')) {
     console.log('says', '😸 hit  me harder 😸 😸 😸😸😸', root, req.path)
-    res.sendFile('index.html', { root });
+    res.sendFile('index.html', { root+req.path });
   } else {
     console.log('this is the error 😸 hahahah 😸 hahahah😸')
       }
