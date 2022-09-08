@@ -19,7 +19,15 @@ app.use(express.static(root));
 console.log('😸', path.join(__dirname, "client/build"), '😸')
 }
 
-
+app.get("*", (req, res) => {
+ 
+  if (!req.path.includes('api')) {
+    console.log('says', '😸 hit  me harder 😸 😸 😸😸😸', root, req.path)
+    res.sendFile('index.html', { root });
+  } else {
+    console.log('this is the error 😸 hahahah 😸 hahahah😸')
+      }
+})
 
 app.use(require('helmet')());
 app.use('/api/students', require('./routes/students'));
