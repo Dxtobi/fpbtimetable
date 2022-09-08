@@ -9,13 +9,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 if(process.env.NODE_ENV === 'production'){
   //set static folder
-  app.use(express.static(__dirname+ "client/build"));
-  const d = path.resolve(__dirname, 'client', 'build', 'index.html')
-console.log('😸', __dirname+"/client/build",d, '😸')
+  app.use(express.static(path.join(__dirname, "client/build")));
+console.log('😸', __dirname+"/client/build", '😸')
 }
 
 
 app.get('/',(req, res) => {
+  console.log('😸 hit  me harder 😸 😸 😸😸😸')
   res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
 app.use(require('helmet')());
